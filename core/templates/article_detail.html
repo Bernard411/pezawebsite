@@ -44,7 +44,7 @@
                         {% for post in popular_posts %}
                         <div class="pb-4 border-b border-gray-200">
                             <h4 class="font-semibold mb-1 text-sm">
-                                <a href="{% url 'peza:article_detail' slug=post.slug %}">{{ post.title }}</a>
+                                <a href="{% url 'article_detail' slug=post.slug %}">{{ post.title }}</a>
                             </h4>
                             <p class="text-xs" style="color: var(--text-secondary);">{{ post.views }} views</p>
                         </div>
