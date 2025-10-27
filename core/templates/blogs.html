@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Peza - Blog{% endblock %}
+{% block meta_description %}Peza - Developer insights, trends, and tips in our blog{% endblock %}
+{% block content %}
+<main class="max-w-screen-2xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content Column -->
+        <div class="lg:col-span-2">
+            <section class="mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--accent-color);">Blog</h1>
+                <p class="text-lg mb-8" style="color: var(--text-secondary);">
+                    Discover developer insights, trends, and tips to stay ahead in web development.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {% for post in posts %}
+                    <div class="article-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                        {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-40 object-cover">
+                        {% endif %}
+                        <div class="p-5">
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-gray-100" style="color: var(--accent-color);">
+                                {{ post.category.name|default:"Blog" }}
+                            </span>
+                            <h3 class="text-lg font-bold mt-3 mb-2">{{ post.title }}</h3>
+                            <p class="text-sm mb-3" style="color: var(--text-secondary);">
+                                {{ post.content|truncatewords:20 }}
+                            </p>
+                            <a href="{% url 'peza:article_detail' slug=post.slug %}" class="text-sm font-semibold" style="color: var(--accent-color);">Read More →</a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No blog posts available.</p>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1">
+            <div class="sticky-sidebar space-y-6">
+                <div class="ad-placeholder" style="min-height: 600px;">
+                    SIDEBAR AD SLOT
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--accent-color);"><i class='bx bx-trending-up mr-2'></i>Popular Posts</h3>
+                    <div class="space-y-4">
+                        {% for post in popular_posts %}
+                        <div class="pb-4 border-b border-gray-200">
+                            <h4 class="font-semibold mb-1 text-sm">
+                                <a href="{% url 'peza:article_detail' slug=post.slug %}">{{ post.title }}</a>
+                            </h4>
+                            <p class="text-xs" style="color: var(--text-secondary);">{{ post.views }} views</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-6 border border-gray-200">
+                    <h3 class="text-xl font-bold mb-3"><i class='bx bx-envelope mr-2'></i>Weekly Newsletter</h3>
+                    <p class="text-sm mb-4" style="color: var(--text-secondary);">Get the latest tutorials delivered to your inbox</p>
+                    <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-lg bg-white border border-gray-300 mb-3 text-sm">
+                    <button class="w-full px-4 py-2 rounded-lg font-semibold transition" style="background: var(--accent-color); color: white;">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+{% endblock %}

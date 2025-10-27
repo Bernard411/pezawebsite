@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block title %}Peza - Resources{% endblock %}
+{% block meta_description %}Peza - Free resources for web developers, including cheat sheets and templates{% endblock %}
+{% block content %}
+<main class="max-w-screen-2xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Content Column -->
+        <div class="lg:col-span-2">
+            <section class="mb-12">
+                <h1 class="text-3xl md:text-4xl font-bold mb-6" style="color: var(--accent-color);">Resources</h1>
+                <p class="text-lg mb-8" style="color: var(--text-secondary);">
+                    Access free cheat sheets, templates, and guides to boost your development skills.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {% for resource in resources %}
+                    <div class="resource-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                        <div class="p-5">
+                            <span class="text-xs font-semibold px-2 py-1 rounded bg-gray-100" style="color: var(--accent-color);">
+                                {{ resource.category.name|default:"Resource" }}
+                            </span>
+                            <h3 class="text-lg font-bold mt-3 mb-2">{{ resource.name }}</h3>
+                            <p class="text-sm mb-3" style="color: var(--text-secondary);">
+                                {{ resource.description|truncatewords:20 }}
+                            </p>
+                            <a href="{% url 'peza:resource_detail' slug=resource.slug %}" class="text-sm font-semibold" style="color: var(--accent-color);">
+                                {% if resource.file %}Download{% else %}Learn More{% endif %} →
+                            </a>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No resources available.</p>
+                    {% endfor %}
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:col-span-1">
+            <div class="sticky-sidebar space-y-6">
+                <div class="ad-placeholder" style="min-height: 600px;">
+                    SIDEBAR AD SLOT
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--accent-color);"><i class='bx bx-trending-up mr-2'></i>Popular Posts</h3>
+                    <div class="space-y-4">
+                        {% for post in popular_posts %}
+                        <div class="pb-4 border-b border-gray-200">
+                            <h4 class="font-semibold mb-1 text-sm">
+                                <a href="{% url 'peza:article_detail' slug=post.slug %}">{{ post.title }}</a>
+                            </h4>
+                            <p class="text-xs" style="color: var(--text-secondary);">{{ post.views }} views</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-xl p-6 border border-gray-200">
+                    <h3 class="text-xl font-bold mb-3"><i class='bx bx-envelope mr-2'></i>Weekly Newsletter</h3>
+                    <p class="text-sm mb-4" style="color: var(--text-secondary);">Get the latest tutorials delivered to your inbox</p>
+                    <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-lg bg-white border border-gray-300 mb-3 text-sm">
+                    <button class="w-full px-4 py-2 rounded-lg font-semibold transition" style="background: var(--accent-color); color: white;">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+{% endblock %}

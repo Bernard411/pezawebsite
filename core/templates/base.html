@@ -1,0 +1,319 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}Peza - Programming Tutorials & Developer Resources{% endblock %}">
+    <title>{% block title %}Peza{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/maria-2" rel="stylesheet">
+                
+    <style>
+        :root {
+            --accent-color: #E30613; /* Airtel Red */
+            --bg-light: #FFFFFF; /* White background */
+            --bg-secondary: #F3F4F6; /* Light gray for contrast */
+            --text-dark: #1F2937; /* Dark text for readability */
+            --text-secondary: #6B7280; /* Muted text for secondary content */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .ad-placeholder {
+            background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+            border: 2px dashed var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+
+        .sticky-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .nav-link {
+            font-family: 'Roboto Mono', monospace;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .article-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(227, 6, 19, 0.2); /* Airtel red shadow */
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--accent-color), #F87171); /* Airtel red gradient */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-wrapper p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .content-wrapper h2 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .content-wrapper h3 {
+            font-family: 'Roboto Mono', monospace;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .content-wrapper code {
+            font-family: 'Roboto Mono', monospace;
+            background: var(--bg-secondary);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .content-wrapper pre {
+            font-family: 'Roboto Mono', monospace;
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .brand-logo {
+            font-family: 'Maria', sans-serif; /* Fallback to sans-serif if Maria is decorative */
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .sticky-sidebar {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="max-w-screen-2xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class='bx bx-code-alt text-2xl text-white rounded-lg p-2' style="background: var(--accent-color);"></i>
+                    <span class="brand-logo">Peza<span style="color: var(--accent-color);">Hub</span></span>
+                </div>
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="{% url 'home' %}" class="nav-link text-sm font-medium">Home</a>
+                    <a href="{% url 'tutorials' %}" class="nav-link text-sm font-medium">Tutorials</a>
+                    <a href="{% url 'tools' %}" class="nav-link text-sm font-medium">Tools</a>
+                    <a href="{% url 'resources' %}" class="nav-link text-sm font-medium">Resources</a>
+                    <a href="{% url 'blog' %}" class="nav-link text-sm font-medium">Blog</a>
+                </nav>
+                <button id="mobileMenuBtn" class="md:hidden p-2">
+                    <i class='bx bx-menu text-2xl'></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 left-0 w-64 h-full bg-white z-50 md:hidden shadow-lg">
+        <div class="p-6">
+            <button id="closeMenuBtn" class="mb-8">
+                <i class='bx bx-x text-2xl'></i>
+            </button>
+            <nav class="flex flex-col space-y-4">
+                <a href="{% url 'home' %}" class="nav-link text-lg font-medium">Home</a>
+                <a href="{% url 'tutorials' %}" class="nav-link text-lg font-medium">Tutorials</a>
+                <a href="{% url 'tools' %}" class="nav-link text-lg font-medium">Tools</a>
+                <a href="{% url 'resources' %}" class="nav-link text-lg font-medium">Resources</a>
+                <a href="{% url 'blog' %}" class="nav-link text-lg font-medium">Blog</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Header Ad -->
+    <div class="max-w-screen-2xl mx-auto px-4 py-4">
+        <div class="ad-placeholder" style="min-height: 90px;">
+            HEADER AD SLOT
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 mt-16">
+        <div class="max-w-screen-2xl mx-auto px-4 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+                <!-- Tutorials Column -->
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--accent-color);">Tutorials</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        {% for category in categories %}
+                            {% if category.articles.exists %}
+                                <li><a href="{% url 'tutorials' %}">{{ category.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Tools Column -->
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--accent-color);">Tools</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        {% for category in categories %}
+                            {% if category.tools.exists %}
+                                <li><a href="{% url 'tools' %}">{{ category.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Resources Column -->
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--accent-color);">Resources</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        {% for category in categories %}
+                            {% if category.resources.exists %}
+                                <li><a href="{% url 'resources' %}">{{ category.name }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- Company Column -->
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--accent-color);">Company</h4>
+                    <ul class="space-y-2 text-sm" style="color: var(--text-secondary);">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                    </ul>
+                </div>
+                <!-- QR Code and Newsletter Column -->
+                <div>
+                    <h4 class="font-bold mb-4" style="color: var(--accent-color);">Connect</h4>
+                    <div class="space-y-4">
+                        <!-- QR Code -->
+                        <div class="qr-code-container">
+                            <a href="{% url 'home' %}" target="_blank" class="block">
+                                <img src="{% static 'images/qr-code.png' %}" alt="PezaHub QR Code" class="w-24 h-24 mx-auto border-2 border-[var(--accent-color)] rounded-lg hover:opacity-90 transition-opacity">
+                                <p class="text-center text-xs mt-2" style="color: var(--text-secondary);">Scan to visit PezaHub</p>
+                            </a>
+                        </div>
+                        <!-- Newsletter Signup -->
+                        <form id="newsletterForm" action="" method="POST" class="space-y-2">
+                            {% csrf_token %}
+                            <label for="email" class="text-sm font-medium" style="color: var(--text-secondary);">Join our Newsletter</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required
+                                class="w-full px-3 py-2 text-sm bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-[var(--accent-color)]"
+                                style="font-family: 'Roboto Mono', monospace;">
+                            <button type="submit"
+                                class="w-full px-3 py-2 text-sm font-medium text-white rounded-lg hover:bg-red-600 transition-colors"
+                                style="background: var(--accent-color); font-family: 'Roboto Mono', monospace;">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm" style="color: var(--text-secondary);">
+                <p>© 2025 Peza. All rights reserved. Built with <i class='bx bx-heart'></i> for developers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const newsletterForm = document.getElementById('newsletterForm');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Newsletter form submission handling
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission for demo
+            const email = document.getElementById('email').value;
+            if (email) {
+                console.log('Newsletter signup:', email); // Replace with actual submission logic
+                alert('Thank you for subscribing!'); // Temporary feedback
+                newsletterForm.reset(); // Clear form
+            }
+        });
+
+        function trackPageView() {
+            console.log('Page view tracked');
+        }
+
+        window.addEventListener('load', trackPageView);
+    </script>
+</body>
+</html>
