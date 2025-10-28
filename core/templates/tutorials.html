@@ -14,8 +14,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {% for tutorial in tutorials %}
                     <div class="article-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                        {% if tutorial.image %}
-                        <img src="{{ tutorial.image.url }}" alt="{{ tutorial.title }}" class="w-full h-40 object-cover">
+                        {% if tutorial.banner_image %}
+                        <img src="{{ tutorial.banner_image }}" alt="{{ tutorial.title }}" class="w-full h-40 object-cover">
                         {% endif %}
                         <div class="p-5">
                             <span class="text-xs font-semibold px-2 py-1 rounded bg-gray-100" style="color: var(--accent-color);">

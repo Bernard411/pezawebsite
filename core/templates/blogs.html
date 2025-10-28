@@ -14,8 +14,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {% for post in posts %}
                     <div class="article-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                        {% if post.image %}
-                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-40 object-cover">
+                        {% if post.banner_image %}
+                        <img src="{{ post.banner_image }}" alt="{{ post.title }}" class="w-full h-40 object-cover">
                         {% endif %}
                         <div class="p-5">
                             <span class="text-xs font-semibold px-2 py-1 rounded bg-gray-100" style="color: var(--accent-color);">

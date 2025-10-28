@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}#{{ tag.name }} - Articles - Peza{% endblock %}
+
+{% block meta_description %}
+  Articles tagged with #{{ tag.name }} on Peza. {{ articles.count }} post{{ articles|pluralize }}.
+{% endblock %}
+
+{% block extra_head %}
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:title" content="Tag: #{{ tag.name }} - Peza">
+<meta property="og:description" content="All articles tagged with #{{ tag.name }}. Explore {{ articles.count }} post{{ articles|pluralize }}.">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary">
+<meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+<meta property="twitter:title" content="Tag: #{{ tag.name }} - Peza">
+<meta property="twitter:description" content="All articles tagged with #{{ tag.name }}.">
+{% endblock %}
+
+
+{% block extra_css %}
+<style>
+  :root {
+    --accent-color: #3b82f6;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+  }
+
+  .tag-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #eff6ff;
+    color: #1e40af;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    border: 1px solid #dbeafe;
+  }
+
+  .article-card {
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+  .article-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: #bfdbfe;
+  }
+  .article-card img {
+    transition: transform 0.4s ease;
+  }
+  .article-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+  }
+  .breadcrumb a {
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover {
+    color: var(--accent-color);
+  }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<main class="max-w-screen-2xl mx-auto px-4 py-8 md:py-12">
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+    <!-- MAIN CONTENT -->
+    <div class="lg:col-span-2">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="{% url 'home' %}">
+          <i class='bx bx-home'></i> Home
+        </a>
+        <span><i class='bx bx-chevron-right'></i></span>
+        <span class="text-gray-500">Tag</span>
+      </nav>
+
+      <!-- Tag Header -->
+      <div class="mb-8">
+        <div class="tag-badge mb-4">
+          <i class='bx bx-purchase-tag'></i>
+          #{{ tag.name }}
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+          Articles tagged with <span class="text-blue-600">#{{ tag.name }}</span>
+        </h1>
+        <p class="text-gray-600 mt-2">
+          {{ articles.count }} article{{ articles|pluralize }} found.
+        </p>
+      </div>
+
+      <!-- Articles Grid -->
+      {% if articles %}
+      <div class="grid gap-6 md:grid-cols-1">
+        {% for article in articles %}
+        <article class="article-card bg-white rounded-xl overflow-hidden shadow-sm">
+          <div class="flex flex-col md:flex-row">
+            
+            <!-- Thumbnail -->
+            <div class="md:w-48 flex-shrink-0">
+              {% if article.featured_image %}
+              <a href="{% url 'article_detail' slug=article.slug %}">
+                <img src="{{ article.featured_image }}"
+                     alt="{{ article.title }}"
+                     class="w-full h-48 md:h-full object-cover">
+              </a>
+              {% else %}
+              <div class="w-full h-48 md:h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                <i class='bx bx-file text-4xl text-gray-400'></i>
+              </div>
+              {% endif %}
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 p-6">
+              <div class="flex items-center gap-3 text-sm text-gray-600 mb-3">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-blue-500 text-white">
+                  {{ article.category.name|default:"Article" }}
+                </span>
+                <span><i class='bx bx-time-five'></i> {{ article.read_time }} min</span>
+                <span><i class='bx bx-calendar'></i> {{ article.published_at|date:"M d, Y" }}</span>
+              </div>
+
+              <h2 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">
+                <a href="{% url 'article_detail' slug=article.slug %}"
+                   class="hover:text-blue-600 transition">
+                  {{ article.title }}
+                </a>
+              </h2>
+
+              <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                {{ article.get_excerpt|striptags|truncatewords:30 }}
+              </p>
+
+              <div class="flex items-center justify-between">
+                <a href="{% url 'article_detail' slug=article.slug %}"
+                   class="text-blue-600 font-medium text-sm hover:underline flex items-center gap-1">
+                  Read More <i class='bx bx-right-arrow-alt'></i>
+                </a>
+
+                <div class="flex items-center gap-2 text-xs text-gray-500">
+                  <span><i class='bx bx-show'></i> {{ article.views }}</span>
+                  {% if article.image_count > 0 %}
+                  <span>• <i class='bx bx-image'></i> {{ article.image_count }}</span>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+
+      <!-- No Results -->
+      {% else %}
+      <div class="text-center py-12 bg-gray-50 rounded-xl">
+        <i class='bx bx-search text-5xl text-gray-300 mb-4'></i>
+        <p class="text-gray-600 text-lg">No articles found for this tag.</p>
+        <a href="{% url 'blog' %}" class="text-blue-600 hover:underline mt-2 inline-block">
+          ← Browse all articles
+        </a>
+      </div>
+      {% endif %}
+
+      <!-- Popular Posts (Compact) -->
+      {% include 'partials/_popular_posts.html' %}
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="lg:col-span-1">
+      <div class="sticky top-4 space-y-6">
+
+        <!-- Ad Slot -->
+        <div class="ad-placeholder bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl p-8 text-center text-gray-500">
+          SIDEBAR AD SLOT
+        </div>
+
+        <!-- Sidebar Popular -->
+        {% include 'partials/_sidebar_popular.html' %}
+
+        <!-- Related Tags (Optional) -->
+        {% if tag.get_related_tags %}
+        <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <i class='bx bx-purchase-tag'></i> Related Tags
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {% for related_tag in tag.get_related_tags|slice:":6" %}
+            <a href="{% url 'articles_by_tag' tag=related_tag.slug %}"
+               class="px-3 py-1 bg-gray-100 rounded-full text-sm hover:bg-gray-200 transition">
+              #{{ related_tag.name }}
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Newsletter -->
+        {% include 'partials/_newsletter.html' %}
+
+      </div>
+    </aside>
+
+  </div>
+</main>
+{% endblock %}

@@ -1,0 +1,183 @@
+<div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 border border-gray-200">
+  <h3 class="text-xl font-bold mb-3 flex items-center gap-2" style="color: var(--text-primary);">
+    <i class='bx bx-envelope'></i> Newsletter
+  </h3>
+  <p class="text-sm mb-4" style="color: var(--text-secondary);">
+    Get the latest articles in your inbox.
+  </p>
+  <form method="post" action="#" class="space-y-3">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="your@email.com" required
+           class="w-full px-4 py-2 rounded-lg bg-white border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-offset-2"
+           style="focus:ring-color: var(--accent-color);">
+    <button type="submit" class="w-full px-4 py-2 rounded-lg font-semibold transition hover:opacity-90"
+            style="background: var(--accent-color); color: white;">
+      <i class='bx bx-right-arrow-alt'></i> Subscribe
+    </button>
+  </form>
+</div>
+<style>
+    /* Content Styling - More Aggressive */
+    .content-wrapper {
+        line-height: 1.8;
+        color: #374151;
+        font-size: 1.0625rem;
+        white-space: pre-line; /* This preserves line breaks from plain text */
+    }
+    
+    .content-wrapper > * {
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .content-wrapper p {
+        margin-bottom: 1.5rem !important;
+        display: block !important;
+    }
+    
+    .content-wrapper br {
+        display: block !important;
+        content: "" !important;
+        margin-top: 0.75rem !important;
+    }
+    
+    .content-wrapper h1,
+    .content-wrapper h2,
+    .content-wrapper h3,
+    .content-wrapper h4,
+    .content-wrapper h5,
+    .content-wrapper h6 {
+        font-weight: 700 !important;
+        margin-top: 2.5rem !important;
+        margin-bottom: 1.25rem !important;
+        color: #1f2937 !important;
+        display: block !important;
+    }
+    
+    .content-wrapper h1 { font-size: 2.25rem !important; }
+    .content-wrapper h2 { font-size: 1.875rem !important; }
+    .content-wrapper h3 { font-size: 1.5rem !important; }
+    .content-wrapper h4 { font-size: 1.25rem !important; }
+    
+    .content-wrapper ul,
+    .content-wrapper ol {
+        margin-bottom: 1.5rem !important;
+        margin-top: 1rem !important;
+        padding-left: 2rem !important;
+        display: block !important;
+    }
+    
+    .content-wrapper li {
+        margin-bottom: 0.75rem !important;
+        display: list-item !important;
+    }
+    
+    .content-wrapper ul {
+        list-style-type: disc !important;
+    }
+    
+    .content-wrapper ol {
+        list-style-type: decimal !important;
+    }
+    
+    .content-wrapper a {
+        color: var(--accent-color);
+        text-decoration: underline;
+        transition: opacity 0.2s;
+    }
+    
+    .content-wrapper a:hover {
+        opacity: 0.8;
+    }
+    
+    .content-wrapper img {
+        max-width: 100% !important;
+        height: auto !important;
+        border-radius: 0.5rem !important;
+        margin: 2rem 0 !important;
+        display: block !important;
+    }
+    
+    .content-wrapper blockquote {
+        border-left: 4px solid var(--accent-color) !important;
+        padding-left: 1.5rem !important;
+        margin: 2rem 0 !important;
+        font-style: italic !important;
+        color: #6b7280 !important;
+        display: block !important;
+    }
+    
+    .content-wrapper code {
+        background-color: #f3f4f6 !important;
+        padding: 0.125rem 0.375rem !important;
+        border-radius: 0.25rem !important;
+        font-family: 'Courier New', monospace !important;
+        font-size: 0.875rem !important;
+        color: #dc2626 !important;
+    }
+    
+    .content-wrapper pre {
+        background-color: #1f2937 !important;
+        color: #f3f4f6 !important;
+        padding: 1.5rem !important;
+        border-radius: 0.5rem !important;
+        overflow-x: auto !important;
+        margin: 2rem 0 !important;
+        display: block !important;
+        white-space: pre-wrap !important;
+    }
+    
+    .content-wrapper pre code {
+        background-color: transparent !important;
+        padding: 0 !important;
+        color: inherit !important;
+    }
+    
+    .content-wrapper table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 2rem 0 !important;
+        display: table !important;
+    }
+    
+    .content-wrapper table th,
+    .content-wrapper table td {
+        border: 1px solid #e5e7eb !important;
+        padding: 0.75rem !important;
+        text-align: left !important;
+    }
+    
+    .content-wrapper table th {
+        background-color: #f9fafb !important;
+        font-weight: 600 !important;
+    }
+    
+    .content-wrapper hr {
+        border: none !important;
+        border-top: 2px solid #e5e7eb !important;
+        margin: 2.5rem 0 !important;
+        display: block !important;
+    }
+    
+    .content-wrapper div {
+        margin-bottom: 1rem !important;
+    }
+    
+    /* Sticky Sidebar */
+    .sticky-sidebar {
+        position: sticky;
+        top: 2rem;
+    }
+    
+    /* Ad Placeholder Styling */
+    .ad-placeholder {
+        background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        border: 2px dashed #d1d5db;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #9ca3af;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+</style>

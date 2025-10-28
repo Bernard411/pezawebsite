@@ -17,4 +17,8 @@ urlpatterns = [
     # Resources
     path('resources/', views.resources_view, name='resources'),
     path('resource/<slug:slug>/', views.resource_detail_view, name='resource_detail'),
+    
+    path('category/<slug:slug>/', views.articles_by_category, name='articles_by_category'),
+    path('tag/<slug:tag>/', views.articles_by_tag, name='articles_by_tag'),
+    path('search/', views.search_view, name='search'),
 ]
