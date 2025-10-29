@@ -3,149 +3,72 @@
 {% block meta_description %}Peza - Programming tutorials, developer tools, and resources for modern web developers{% endblock %}
 {% block content %}
 <style>
-         
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-        
-        .animated-text-container {
-            height: 120px;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-        }
-        
-        .animated-text {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-        
-        .animated-text.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .animated-text.exiting {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-        
-        .search-bar {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-</style>
-<!-- Hero Section -->
-    <section class="gradient-bg py-24 md:py-32 relative" style="background-image: url('https://i.natgeofe.com/n/b8de5a06-0905-4212-b228-eb40b5ab0299/africa-tech-revolution-coding-technology-computers-apps-6.jpg'); background-size: cover; background-position: center;">
-        <div class="hero-overlay"></div>
-        <div class="max-w-screen-2xl mx-auto px-4 hero-content">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="animated-text-container">
-                    <h1  style="color: white;" class="text-4xl md:text-6xl font-bold animated-text active">
-                        Master <span style="color: white;">Modern</span> Web Development
-                    </h1>
-                    <h1  style="color: white;" class="text-4xl md:text-6xl font-bold animated-text">
-                        Explore <span style="color: white;">AI</span> Innovations
-                    </h1>
-                    <h1  style="color: white;" class="text-4xl md:text-6xl font-bold animated-text">
-                        Discover <span style="color: white;">Malawi</span> Tech Scene
-                    </h1>
-                    <h1  style="color: white;" class="text-4xl md:text-6xl font-bold animated-text">
-                        Follow <span style="color: white;">Africa</span> Tech Revolution
-                    </h1>
-                </div>
-                <p class="text-lg md:text-xl mb-8 text-white/90">
-                    Discover free tutorials, tools, and resources to build cutting-edge web applications with Peza.
-                </p>
-                
-                <!-- Search Bar -->
-                <div class="search-bar mb-8">
-                    <form class="flex">
-                        <input type="text" placeholder="Search for tech topics, AI news, or African tech..." 
-                               class="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <button type="submit" class="px-6 py-3 rounded-r-lg font-semibold text-white transition" 
-                                style="background: var(--accent-color);">
-                            Search
-                        </button>
-                    </form>
-                </div>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center" style="margin-top: 10px;">
-                    <a href="#" class="px-8 py-3 rounded-lg font-semibold text-white transition" style="background: var(--accent-color);">
-                        Browse Tutorials
-                    </a>
-                    <a href="#" class="px-8 py-3 rounded-lg font-semibold border-2 border-white text-white transition hover:bg-white hover:text-[var(--accent-color)]">
-                        Explore Tools
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+    .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 10;
+    }
+    
+    .animated-text-container {
+        height: 80px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+    
+    .animated-text {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s ease;
+    }
+    
+    .animated-text.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .animated-text.exiting {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    
+    .search-bar {
+        max-width: 600px;
+        margin: 0 auto;
+    }
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const textElements = document.querySelectorAll('.animated-text');
-            let currentIndex = 0;
-            
-            function animateText() {
-                // Remove active class from current element
-                textElements[currentIndex].classList.remove('active');
-                textElements[currentIndex].classList.add('exiting');
-                
-                // Calculate next index
-                currentIndex = (currentIndex + 1) % textElements.length;
-                
-                // Add active class to next element
-                setTimeout(() => {
-                    textElements.forEach(el => {
-                        el.classList.remove('exiting');
-                    });
-                    textElements[currentIndex].classList.add('active');
-                }, 800);
-            }
-            
-            // Start animation loop
-            setInterval(animateText, 3000);
-        });
-    </script>
-
-{% load static %}
-<style>
-    /* Content Styling - More Aggressive */
+    /* Content Styling */
     .content-wrapper {
-        line-height: 1.8;
+        line-height: 1.6;
         color: #374151;
-        font-size: 1.0625rem;
-        white-space: pre-line; /* This preserves line breaks from plain text */
+        font-size: 1rem;
+        white-space: pre-line;
     }
     
     .content-wrapper > * {
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1rem !important;
     }
     
     .content-wrapper p {
-        margin-bottom: 1.5rem !important;
+        margin-bottom: 1rem !important;
         display: block !important;
     }
     
     .content-wrapper br {
         display: block !important;
         content: "" !important;
-        margin-top: 0.75rem !important;
+        margin-top: 0.5rem !important;
     }
     
     .content-wrapper h1,
@@ -155,27 +78,27 @@
     .content-wrapper h5,
     .content-wrapper h6 {
         font-weight: 700 !important;
-        margin-top: 2.5rem !important;
-        margin-bottom: 1.25rem !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 0.75rem !important;
         color: #1f2937 !important;
         display: block !important;
     }
     
-    .content-wrapper h1 { font-size: 2.25rem !important; }
-    .content-wrapper h2 { font-size: 1.875rem !important; }
-    .content-wrapper h3 { font-size: 1.5rem !important; }
-    .content-wrapper h4 { font-size: 1.25rem !important; }
+    .content-wrapper h1 { font-size: 1.75rem !important; }
+    .content-wrapper h2 { font-size: 1.5rem !important; }
+    .content-wrapper h3 { font-size: 1.25rem !important; }
+    .content-wrapper h4 { font-size: 1.1rem !important; }
     
     .content-wrapper ul,
     .content-wrapper ol {
-        margin-bottom: 1.5rem !important;
-        margin-top: 1rem !important;
-        padding-left: 2rem !important;
+        margin-bottom: 1rem !important;
+        margin-top: 0.75rem !important;
+        padding-left: 1.5rem !important;
         display: block !important;
     }
     
     .content-wrapper li {
-        margin-bottom: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
         display: list-item !important;
     }
     
@@ -200,15 +123,15 @@
     .content-wrapper img {
         max-width: 100% !important;
         height: auto !important;
-        border-radius: 0.5rem !important;
-        margin: 2rem 0 !important;
+        border-radius: 0.375rem !important;
+        margin: 1.25rem 0 !important;
         display: block !important;
     }
     
     .content-wrapper blockquote {
-        border-left: 4px solid var(--accent-color) !important;
-        padding-left: 1.5rem !important;
-        margin: 2rem 0 !important;
+        border-left: 3px solid var(--accent-color) !important;
+        padding-left: 1rem !important;
+        margin: 1.25rem 0 !important;
         font-style: italic !important;
         color: #6b7280 !important;
         display: block !important;
@@ -216,20 +139,20 @@
     
     .content-wrapper code {
         background-color: #f3f4f6 !important;
-        padding: 0.125rem 0.375rem !important;
+        padding: 0.1rem 0.3rem !important;
         border-radius: 0.25rem !important;
         font-family: 'Courier New', monospace !important;
-        font-size: 0.875rem !important;
+        font-size: 0.8rem !important;
         color: #dc2626 !important;
     }
     
     .content-wrapper pre {
         background-color: #1f2937 !important;
         color: #f3f4f6 !important;
-        padding: 1.5rem !important;
-        border-radius: 0.5rem !important;
+        padding: 1rem !important;
+        border-radius: 0.375rem !important;
         overflow-x: auto !important;
-        margin: 2rem 0 !important;
+        margin: 1.25rem 0 !important;
         display: block !important;
         white-space: pre-wrap !important;
     }
@@ -243,14 +166,15 @@
     .content-wrapper table {
         width: 100% !important;
         border-collapse: collapse !important;
-        margin: 2rem 0 !important;
+        margin: 1.25rem 0 !important;
         display: table !important;
+        font-size: 0.9rem !important;
     }
     
     .content-wrapper table th,
     .content-wrapper table td {
         border: 1px solid #e5e7eb !important;
-        padding: 0.75rem !important;
+        padding: 0.5rem !important;
         text-align: left !important;
     }
     
@@ -262,71 +186,212 @@
     .content-wrapper hr {
         border: none !important;
         border-top: 2px solid #e5e7eb !important;
-        margin: 2.5rem 0 !important;
+        margin: 1.5rem 0 !important;
         display: block !important;
     }
-    
-    .content-wrapper div {
-        margin-bottom: 1rem !important;
+
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+        .animated-text-container {
+            height: 50px;
+            margin-bottom: 0.75rem;
+        }
+
+        .content-wrapper {
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .content-wrapper h1 { font-size: 1.4rem !important; margin-top: 1.25rem !important; }
+        .content-wrapper h2 { font-size: 1.2rem !important; margin-top: 1rem !important; }
+        .content-wrapper h3 { font-size: 1.05rem !important; margin-top: 0.875rem !important; }
+        .content-wrapper h4 { font-size: 0.95rem !important; margin-top: 0.75rem !important; }
+
+        .content-wrapper > * {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .content-wrapper p {
+            margin-bottom: 0.75rem !important;
+        }
+
+        .content-wrapper ul,
+        .content-wrapper ol {
+            padding-left: 1.25rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        .content-wrapper li {
+            margin-bottom: 0.375rem !important;
+        }
+
+        .content-wrapper pre {
+            padding: 0.75rem !important;
+            margin: 1rem 0 !important;
+            font-size: 0.75rem !important;
+        }
+
+        .content-wrapper code {
+            font-size: 0.75rem !important;
+        }
+
+        .content-wrapper table {
+            font-size: 0.75rem !important;
+        }
+
+        .content-wrapper table th,
+        .content-wrapper table td {
+            padding: 0.375rem !important;
+        }
+
+        .content-wrapper img {
+            margin: 1rem 0 !important;
+        }
+
+        .content-wrapper blockquote {
+            padding-left: 0.75rem !important;
+            margin: 1rem 0 !important;
+        }
     }
-    
-  
-  
+
+    @media (max-width: 480px) {
+        .animated-text-container {
+            height: 40px;
+        }
+
+        .content-wrapper {
+            font-size: 0.8125rem;
+        }
+
+        .content-wrapper h1 { font-size: 1.2rem !important; }
+        .content-wrapper h2 { font-size: 1.05rem !important; }
+        .content-wrapper h3 { font-size: 0.95rem !important; }
+        .content-wrapper h4 { font-size: 0.875rem !important; }
     }
 </style>
 
+<!-- Hero Section -->
+<section class="gradient-bg py-12 md:py-24 lg:py-32 relative" style="background-image: url('https://i.natgeofe.com/n/b8de5a06-0905-4212-b228-eb40b5ab0299/africa-tech-revolution-coding-technology-computers-apps-6.jpg'); background-size: cover; background-position: center;">
+    <div class="hero-overlay"></div>
+    <div class="max-w-screen-2xl mx-auto px-3 md:px-4 hero-content">
+        <div class="text-center max-w-4xl mx-auto">
+            <div class="animated-text-container">
+                <h1 style="color: white;" class="text-2xl md:text-4xl lg:text-6xl font-bold animated-text active">
+                    Master <span style="color: white;">Modern</span> Web Development
+                </h1>
+                <h1 style="color: white;" class="text-2xl md:text-4xl lg:text-6xl font-bold animated-text">
+                    Explore <span style="color: white;">AI</span> Innovations
+                </h1>
+                <h1 style="color: white;" class="text-2xl md:text-4xl lg:text-6xl font-bold animated-text">
+                    Discover <span style="color: white;">Malawi</span> Tech Scene
+                </h1>
+                <h1 style="color: white;" class="text-2xl md:text-4xl lg:text-6xl font-bold animated-text">
+                    Follow <span style="color: white;">Africa</span> Tech Revolution
+                </h1>
+            </div>
+            <p class="text-sm md:text-lg lg:text-xl mb-4 md:mb-8 text-white/90">
+                Discover free tutorials, tools, and resources to build cutting-edge web applications.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="search-bar mb-4 md:mb-8">
+                <form class="flex">
+                    <input type="text" placeholder="Search tech topics..." 
+                           class="flex-grow px-3 py-2 md:px-4 md:py-3 rounded-l-lg text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="px-4 py-2 md:px-6 md:py-3 text-sm md:text-base rounded-r-lg font-semibold text-white transition" 
+                            style="background: var(--accent-color);">
+                        Search
+                    </button>
+                </form>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center">
+                <a href="#" class="px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-lg font-semibold text-white transition" style="background: var(--accent-color);">
+                    Browse Tutorials
+                </a>
+                <a href="#" class="px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-lg font-semibold border-2 border-white text-white transition hover:bg-white hover:text-[var(--accent-color)]">
+                    Explore Tools
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const textElements = document.querySelectorAll('.animated-text');
+        let currentIndex = 0;
+        
+        function animateText() {
+            textElements[currentIndex].classList.remove('active');
+            textElements[currentIndex].classList.add('exiting');
+            
+            currentIndex = (currentIndex + 1) % textElements.length;
+            
+            setTimeout(() => {
+                textElements.forEach(el => {
+                    el.classList.remove('exiting');
+                });
+                textElements[currentIndex].classList.add('active');
+            }, 800);
+        }
+        
+        setInterval(animateText, 3000);
+    });
+</script>
+
 <!-- Main Content Area -->
-<main class="max-w-screen-2xl mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<main class="max-w-screen-2xl mx-auto px-3 md:px-4 py-6 md:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
         <!-- Main Content Column -->
         <div class="lg:col-span-2">
             <!-- Featured Article -->
             {% if featured_article %}
-            <article class="bg-white rounded-xl overflow-hidden mb-8 border border-gray-200 shadow-sm">
+            <article class="bg-white rounded-lg md:rounded-xl overflow-hidden mb-4 md:mb-8 border border-gray-200 shadow-sm">
                 {% if featured_article.banner_image %}
-                <img src="{{ featured_article.banner_image }}" alt="{{ featured_article.title }}" class="w-full h-48 md:h-64 object-cover">
+                <img src="{{ featured_article.banner_image }}" alt="{{ featured_article.title }}" class="w-full h-32 md:h-48 lg:h-64 object-cover">
                 {% endif %}
-                <div class="p-6 md:p-8">
-                    <div class="flex items-center gap-4 mb-4 text-sm" style="color: var(--text-secondary);">
-                        <span class="px-3 py-1 rounded-full text-xs font-semibold" style="background: var(--accent-color); color: white;">{{ featured_article.category.name }}</span>
-                        <span>{{ featured_article.read_time }} min read</span>
-                        <span>{{ featured_article.published_at|date:"M d, Y" }}</span>
+                <div class="p-4 md:p-6 lg:p-8">
+                    <div class="flex items-center gap-2 md:gap-4 mb-3 md:mb-4 text-xs md:text-sm" style="color: var(--text-secondary);">
+                        <span class="px-2 py-0.5 md:px-3 md:py-1 rounded-full text-[10px] md:text-xs font-semibold" style="background: var(--accent-color); color: white;">{{ featured_article.category.name }}</span>
+                        <span>{{ featured_article.read_time }} min</span>
+                        <span class="hidden sm:inline">{{ featured_article.published_at|date:"M d, Y" }}</span>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold mb-4">{{ featured_article.title }}</h2>
-                    <p class="mb-6" style="color: var(--text-secondary);">
+                    <h2 class="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">{{ featured_article.title }}</h2>
+                    <p class="mb-4 md:mb-6 text-sm md:text-base" style="color: var(--text-secondary);">
                         {{ featured_article.content|truncatewords:30 }}
                     </p>
-                    <div class="ad-placeholder my-8" style="min-height: 250px;">
-                        IN-CONTENT AD SLOT 1
+                    <div class="ad-placeholder my-4 md:my-8" style="min-height: 150px;">
+                        IN-CONTENT AD
                     </div>
                     <div class="content-wrapper">
                         {{ featured_article.content|safe }}
                     </div>
-                    <div class="ad-placeholder mt-8" style="min-height: 250px;">
-                        BOTTOM ARTICLE AD SLOT
+                    <div class="ad-placeholder mt-4 md:mt-8" style="min-height: 150px;">
+                        BOTTOM AD
                     </div>
                 </div>
             </article>
             {% endif %}
 
             <!-- Recent Articles -->
-            <section id="tutorials" class="mb-12">
-                <h2 class="text-3xl font-bold mb-6" style="color: var(--accent-color);">Latest Tutorials</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <section id="tutorials" class="mb-6 md:mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6" style="color: var(--accent-color);">Latest Tutorials</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
                     {% for article in articles %}
-                    <div class="article-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                    <div class="article-card bg-white rounded-lg md:rounded-xl overflow-hidden border border-gray-200 shadow-sm">
                         {% if article.banner_image %}
-                        <img src="{{ article.banner_image }}" alt="{{ article.title }}" class="w-full h-40 object-cover">
+                        <img src="{{ article.banner_image }}" alt="{{ article.title }}" class="w-full h-32 md:h-40 object-cover">
                         {% endif %}
-                        <div class="p-5">
-                            <span class="text-xs font-semibold px-2 py-1 rounded bg-gray-100" style="color: var(--accent-color);">{{ article.category.name }}</span>
-                            <h3 class="text-lg font-bold mt-3 mb-2">{{ article.title }}</h3>
-                            <p class="text-sm mb-3" style="color: var(--text-secondary);">{{ article.content|truncatewords:20 }}</p>
-                            <a href="{% url 'article_detail' slug=article.slug %}" class="text-sm font-semibold" style="color: var(--accent-color);">Read More →</a>
+                        <div class="p-3 md:p-5">
+                            <span class="text-[10px] md:text-xs font-semibold px-2 py-0.5 md:py-1 rounded bg-gray-100" style="color: var(--accent-color);">{{ article.category.name }}</span>
+                            <h3 class="text-base md:text-lg font-bold mt-2 md:mt-3 mb-1 md:mb-2">{{ article.title }}</h3>
+                            <p class="text-xs md:text-sm mb-2 md:mb-3" style="color: var(--text-secondary);">{{ article.content|truncatewords:15 }}</p>
+                            <a href="{% url 'article_detail' slug=article.slug %}" class="text-xs md:text-sm font-semibold" style="color: var(--accent-color);">Read More →</a>
                         </div>
                     </div>
                     {% empty %}
-                    <p>No tutorials available.</p>
+                    <p class="text-sm">No tutorials available.</p>
                     {% endfor %}
                 </div>
             </section>
@@ -334,26 +399,26 @@
 
         <!-- Sidebar -->
         <aside class="lg:col-span-1">
-            <div class="sticky-sidebar space-y-6">
-                <div class="ad-placeholder" style="min-height: 600px;">
-                    SIDEBAR AD SLOT
+            <div class="sticky-sidebar space-y-4 md:space-y-6">
+                <div class="ad-placeholder" style="min-height: 400px;">
+                    SIDEBAR AD
                 </div>
-                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-                    <h3 class="text-xl font-bold mb-4" style="color: var(--accent-color);"><i class='bx bx-trending-up mr-2'></i>Popular Posts</h3>
-                    <div class="space-y-4">
+                <div class="bg-white rounded-lg md:rounded-xl p-4 md:p-6 border border-gray-200 shadow-sm">
+                    <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4" style="color: var(--accent-color);"><i class='bx bx-trending-up mr-1 md:mr-2'></i>Popular Posts</h3>
+                    <div class="space-y-2 md:space-y-4">
                         {% for post in popular_posts %}
-                        <div class="pb-4 border-b border-gray-200">
-                            <h4 class="font-semibold mb-1 text-sm">{{ post.title }}</h4>
-                            <p class="text-xs" style="color: var(--text-secondary);">{{ post.views }} views</p>
+                        <div class="pb-2 md:pb-4 border-b border-gray-200">
+                            <h4 class="font-semibold mb-0.5 md:mb-1 text-xs md:text-sm">{{ post.title }}</h4>
+                            <p class="text-[10px] md:text-xs" style="color: var(--text-secondary);">{{ post.views }} views</p>
                         </div>
                         {% endfor %}
                     </div>
                 </div>
-                <div class="bg-gray-100 rounded-xl p-6 border border-gray-200">
-                    <h3 class="text-xl font-bold mb-3"><i class='bx bx-envelope mr-2'></i>Weekly Newsletter</h3>
-                    <p class="text-sm mb-4" style="color: var(--text-secondary);">Get the latest tutorials delivered to your inbox</p>
-                    <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-lg bg-white border border-gray-300 mb-3 text-sm">
-                    <button class="w-full px-4 py-2 rounded-lg font-semibold transition" style="background: var(--accent-color); color: white;">
+                <div class="bg-gray-100 rounded-lg md:rounded-xl p-4 md:p-6 border border-gray-200">
+                    <h3 class="text-lg md:text-xl font-bold mb-2 md:mb-3"><i class='bx bx-envelope mr-1 md:mr-2'></i>Newsletter</h3>
+                    <p class="text-xs md:text-sm mb-3 md:mb-4" style="color: var(--text-secondary);">Get latest tutorials in your inbox</p>
+                    <input type="email" placeholder="Your email" class="w-full px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-white border border-gray-300 mb-2 md:mb-3 text-xs md:text-sm">
+                    <button class="w-full px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm rounded-lg font-semibold transition" style="background: var(--accent-color); color: white;">
                         Subscribe
                     </button>
                 </div>

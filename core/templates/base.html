@@ -7,7 +7,7 @@
     <meta name="description" content="{% block meta_description %}Peza - Programming Tutorials & Developer Resources{% endblock %}">
     <title>{% block title %}Peza{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/maria-2" rel="stylesheet">
                 
@@ -30,7 +30,7 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: var(--bg-light);
             color: var(--text-dark);
-            line-height: 1.6;
+            line-height: 1.5;
             font-size: 16px;
         }
 
@@ -41,15 +41,15 @@
             align-items: center;
             justify-content: center;
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 12px;
             font-weight: 600;
-            border-radius: 8px;
-            min-height: 100px;
+            border-radius: 6px;
+            min-height: 80px;
         }
 
         .sticky-sidebar {
             position: sticky;
-            top: 100px;
+            top: 80px;
         }
 
         .nav-link {
@@ -66,8 +66,8 @@
         }
 
         .article-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(227, 6, 19, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(227, 6, 19, 0.15);
         }
 
         .gradient-bg {
@@ -92,30 +92,30 @@
         }
 
         .content-wrapper p {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             color: var(--text-secondary);
         }
 
         .content-wrapper h2 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
             color: var(--accent-color);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
         }
 
         .content-wrapper h3 {
             font-family: 'Roboto Mono', monospace;
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.6rem;
             color: var(--text-dark);
-            font-size: 1.25rem;
+            font-size: 1.15rem;
         }
 
         .content-wrapper code {
             font-family: 'Roboto Mono', monospace;
             background: var(--bg-secondary);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.15rem 0.4rem;
+            border-radius: 3px;
             font-size: 0.85em;
             word-break: break-word;
         }
@@ -123,11 +123,11 @@
         .content-wrapper pre {
             font-family: 'Roboto Mono', monospace;
             background: var(--bg-secondary);
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 0.75rem;
+            border-radius: 6px;
             overflow-x: auto;
-            margin: 1.5rem 0;
-            font-size: 0.85rem;
+            margin: 1rem 0;
+            font-size: 0.8rem;
         }
 
         .mobile-menu {
@@ -141,14 +141,15 @@
 
         .brand-logo {
             font-family: 'Maria', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 700;
         }
 
         /* Mobile-specific optimizations */
         @media (max-width: 768px) {
             body {
-                font-size: 14px;
+                font-size: 13px;
+                line-height: 1.4;
             }
 
             .sticky-sidebar {
@@ -156,60 +157,78 @@
             }
 
             .brand-logo {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
             }
 
-            .content-wrapper h2 {
-                font-size: 1.25rem;
-                margin-top: 1.5rem;
-            }
-
-            .content-wrapper h3 {
-                font-size: 1.1rem;
-                margin-top: 1.2rem;
-            }
-
-            .content-wrapper pre {
-                font-size: 0.75rem;
-                padding: 0.75rem;
-                margin: 1rem 0;
-            }
-
-            .content-wrapper code {
-                font-size: 0.8em;
-            }
-
-            .article-card {
-                margin-bottom: 1rem;
-            }
-
-            /* Reduce header size on mobile */
-            header {
-                padding: 0.5rem 0;
-            }
-
-            /* Make footer text smaller on mobile */
-            footer {
-                font-size: 0.875rem;
-            }
-
-            footer h4 {
-                font-size: 1rem;
+            .content-wrapper p {
                 margin-bottom: 0.75rem;
             }
 
-            footer ul {
+            .content-wrapper h2 {
+                font-size: 1.1rem;
+                margin-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .content-wrapper h3 {
+                font-size: 1rem;
+                margin-top: 0.85rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .content-wrapper pre {
+                font-size: 0.7rem;
+                padding: 0.5rem;
+                margin: 0.75rem 0;
+            }
+
+            .content-wrapper code {
+                font-size: 0.75em;
+                padding: 0.1rem 0.3rem;
+            }
+
+            .article-card {
+                margin-bottom: 0.75rem;
+            }
+
+            header {
+                padding: 0;
+            }
+
+            footer {
                 font-size: 0.8rem;
+            }
+
+            footer h4 {
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+            }
+
+            footer ul {
+                font-size: 0.75rem;
+            }
+
+            .ad-placeholder {
+                min-height: 60px;
+                font-size: 11px;
             }
         }
 
         @media (max-width: 480px) {
             body {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .brand-logo {
+                font-size: 0.85rem;
+            }
+
+            .content-wrapper h2 {
                 font-size: 1rem;
+            }
+
+            .content-wrapper h3 {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -217,10 +236,10 @@
 <body>
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
-        <div class="max-w-screen-2xl mx-auto px-3 py-2 md:px-4 md:py-3">
+        <div class="max-w-screen-2xl mx-auto px-2 py-1.5 md:px-4 md:py-3">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <i class='bx bx-code-alt text-xl md:text-2xl text-white rounded-lg p-1.5 md:p-2' style="background: var(--accent-color);"></i>
+                <div class="flex items-center space-x-1.5">
+                    <i class='bx bx-code-alt text-base md:text-2xl text-white rounded p-1 md:p-2' style="background: var(--accent-color);"></i>
                     <span class="brand-logo">Tech<span style="color: var(--accent-color);">@peza</span></span>
                 </div>
                 <nav class="hidden md:flex items-center space-x-6">
@@ -230,25 +249,25 @@
                     <a href="{% url 'resources' %}" class="nav-link text-sm font-medium">Resources</a>
                     <a href="{% url 'blog' %}" class="nav-link text-sm font-medium">Blog</a>
                 </nav>
-                <button id="mobileMenuBtn" class="md:hidden p-1.5">
-                    <i class='bx bx-menu text-xl'></i>
+                <button id="mobileMenuBtn" class="md:hidden p-1">
+                    <i class='bx bx-menu text-lg'></i>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed top-0 left-0 w-64 h-full bg-white z-50 md:hidden shadow-lg">
-        <div class="p-4">
-            <button id="closeMenuBtn" class="mb-6">
-                <i class='bx bx-x text-2xl'></i>
+    <div id="mobileMenu" class="mobile-menu fixed top-0 left-0 w-56 h-full bg-white z-50 md:hidden shadow-lg">
+        <div class="p-3">
+            <button id="closeMenuBtn" class="mb-4">
+                <i class='bx bx-x text-xl'></i>
             </button>
-            <nav class="flex flex-col space-y-3">
-                <a href="{% url 'home' %}" class="nav-link text-base font-medium">Home</a>
-                <a href="{% url 'tutorials' %}" class="nav-link text-base font-medium">Tutorials</a>
-                <a href="{% url 'tools' %}" class="nav-link text-base font-medium">Tools</a>
-                <a href="{% url 'resources' %}" class="nav-link text-base font-medium">Resources</a>
-                <a href="{% url 'blog' %}" class="nav-link text-base font-medium">Blog</a>
+            <nav class="flex flex-col space-y-2">
+                <a href="{% url 'home' %}" class="nav-link text-sm font-medium py-1">Home</a>
+                <a href="{% url 'tutorials' %}" class="nav-link text-sm font-medium py-1">Tutorials</a>
+                <a href="{% url 'tools' %}" class="nav-link text-sm font-medium py-1">Tools</a>
+                <a href="{% url 'resources' %}" class="nav-link text-sm font-medium py-1">Resources</a>
+                <a href="{% url 'blog' %}" class="nav-link text-sm font-medium py-1">Blog</a>
             </nav>
         </div>
     </div>
@@ -258,13 +277,13 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 mt-12 md:mt-16">
-        <div class="max-w-screen-2xl mx-auto px-3 py-8 md:px-4 md:py-12">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-8 mb-6 md:mb-8">
+    <footer class="bg-gray-900 border-t border-gray-800 mt-8 md:mt-16">
+        <div class="max-w-screen-2xl mx-auto px-2 py-6 md:px-4 md:py-12">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-8 mb-4 md:mb-8">
                 <!-- Tutorials Column -->
                 <div>
-                    <h4 class="font-bold mb-2 md:mb-4 text-sm md:text-base" style="color: var(--accent-color);">Tutorials</h4>
-                    <ul class="space-y-1 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
+                    <h4 class="font-bold mb-1.5 md:mb-4 text-xs md:text-base" style="color: var(--accent-color);">Tutorials</h4>
+                    <ul class="space-y-0.5 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
                         {% for category in categories %}
                             {% if category.articles.exists %}
                                 <li><a href="{% url 'tutorials' %}" class="hover:text-white transition-colors">{{ category.name }}</a></li>
@@ -274,8 +293,8 @@
                 </div>
                 <!-- Tools Column -->
                 <div>
-                    <h4 class="font-bold mb-2 md:mb-4 text-sm md:text-base" style="color: var(--accent-color);">Tools</h4>
-                    <ul class="space-y-1 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
+                    <h4 class="font-bold mb-1.5 md:mb-4 text-xs md:text-base" style="color: var(--accent-color);">Tools</h4>
+                    <ul class="space-y-0.5 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
                         {% for category in categories %}
                             {% if category.tools.exists %}
                                 <li><a href="{% url 'tools' %}" class="hover:text-white transition-colors">{{ category.name }}</a></li>
@@ -285,8 +304,8 @@
                 </div>
                 <!-- Resources Column -->
                 <div>
-                    <h4 class="font-bold mb-2 md:mb-4 text-sm md:text-base" style="color: var(--accent-color);">Resources</h4>
-                    <ul class="space-y-1 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
+                    <h4 class="font-bold mb-1.5 md:mb-4 text-xs md:text-base" style="color: var(--accent-color);">Resources</h4>
+                    <ul class="space-y-0.5 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
                         {% for category in categories %}
                             {% if category.resources.exists %}
                                 <li><a href="{% url 'resources' %}" class="hover:text-white transition-colors">{{ category.name }}</a></li>
@@ -296,8 +315,8 @@
                 </div>
                 <!-- Company Column -->
                 <div>
-                    <h4 class="font-bold mb-2 md:mb-4 text-sm md:text-base" style="color: var(--accent-color);">Company</h4>
-                    <ul class="space-y-1 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
+                    <h4 class="font-bold mb-1.5 md:mb-4 text-xs md:text-base" style="color: var(--accent-color);">Company</h4>
+                    <ul class="space-y-0.5 md:space-y-2 text-xs md:text-sm" style="color: var(--text-secondary);">
                         <li><a href="#" class="hover:text-white transition-colors">About</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
@@ -306,24 +325,24 @@
                 </div>
                 <!-- QR Code and Newsletter Column -->
                 <div class="col-span-2 md:col-span-1">
-                    <h4 class="font-bold mb-2 md:mb-4 text-sm md:text-base" style="color: var(--accent-color);">Connect</h4>
-                    <div class="space-y-3 md:space-y-4">
+                    <h4 class="font-bold mb-1.5 md:mb-4 text-xs md:text-base" style="color: var(--accent-color);">Connect</h4>
+                    <div class="space-y-2 md:space-y-4">
                         <!-- QR Code -->
                         <div class="qr-code-container">
                             <a href="{% url 'home' %}" target="_blank" class="block">
-                                <img src="{% static 'images/qr-code.png' %}" alt="PezaHub QR Code" class="w-20 h-20 md:w-24 md:h-24 mx-auto md:mx-0 border-2 border-[var(--accent-color)] rounded-lg hover:opacity-90 transition-opacity">
-                                <p class="text-center md:text-left text-xs mt-2" style="color: var(--text-secondary);">Scan to visit</p>
+                                <img src="{% static 'images/qr-code.png' %}" alt="PezaHub QR Code" class="w-16 h-16 md:w-24 md:h-24 mx-auto md:mx-0 border border-[var(--accent-color)] rounded hover:opacity-90 transition-opacity">
+                                <p class="text-center md:text-left text-[10px] md:text-xs mt-1" style="color: var(--text-secondary);">Scan to visit</p>
                             </a>
                         </div>
                         <!-- Newsletter Signup -->
-                        <form id="newsletterForm" action="" method="POST" class="space-y-2">
+                        <form id="newsletterForm" action="" method="POST" class="space-y-1.5">
                             {% csrf_token %}
-                            <label for="email" class="text-xs md:text-sm font-medium block" style="color: var(--text-secondary);">Newsletter</label>
+                            <label for="email" class="text-[10px] md:text-sm font-medium block" style="color: var(--text-secondary);">Newsletter</label>
                             <input type="email" id="email" name="email" placeholder="Your email" required
-                                class="w-full px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm bg-gray-800 text-white border border-gray-700 rounded-lg focus:outline-none focus:border-[var(--accent-color)]"
+                                class="w-full px-2 py-1 md:px-3 md:py-2 text-[11px] md:text-sm bg-gray-800 text-white border border-gray-700 rounded focus:outline-none focus:border-[var(--accent-color)]"
                                 style="font-family: 'Roboto Mono', monospace;">
                             <button type="submit"
-                                class="w-full px-2 py-1.5 md:px-3 md:py-2 text-xs md:text-sm font-medium text-white rounded-lg hover:bg-red-600 transition-colors"
+                                class="w-full px-2 py-1 md:px-3 md:py-2 text-[11px] md:text-sm font-medium text-white rounded hover:bg-red-600 transition-colors"
                                 style="background: var(--accent-color); font-family: 'Roboto Mono', monospace;">
                                 Subscribe
                             </button>
@@ -331,8 +350,8 @@
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-4 md:pt-8 text-center text-xs md:text-sm" style="color: var(--text-secondary);">
-                <p>© 2025 Peza. All rights reserved. Built with <i class='bx bx-heart'></i> for developers.</p>
+            <div class="border-t border-gray-800 pt-3 md:pt-8 text-center text-[10px] md:text-sm" style="color: var(--text-secondary);">
+                <p>© 2025 Peza. Built with <i class='bx bx-heart'></i> for developers.</p>
             </div>
         </div>
     </footer>
